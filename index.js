@@ -17,12 +17,12 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-let annDate = params.date ?? '2018-03-20'; // "some_value"
+let annDate = params.date ?? '2022-09-22'; // "some_value"
 
 
-const name1 = params.name1 ?? "Thomass";
-const name2 = params.name2 ?? "Sam";
-if((name1 && name2) && (name1 !== "Thomass" || name2 !== "Sam")) document.title = `${name1} + ${name2} Forever!`;
+const name1 = params.name1 ?? "Jackson";
+const name2 = params.name2 ?? "Kristen";
+if((name1 && name2) && (name1 !== "Jackson" || name2 !== "Kristen")) document.title = `${name1} + ${name2} Forever!`;
 
 const anniversary = dayjs.tz(annDate, 'America/Toronto').startOf('day');
 let today = dayjs.tz(dayjs(), 'America/Toronto');
