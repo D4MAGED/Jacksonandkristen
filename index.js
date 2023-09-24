@@ -354,26 +354,29 @@ function draw() {
   //       " seconds"
   //   );
 
-  // Define the two dates
-    // Define the anniversary date at midnight in the America/Toronto timezone
-    
-    // Define today's date and time in the America/Toronto timezone
+  
+// Define the anniversary date at midnight in Toronto timezone
+const anniversary = moment.tz("YYYY-MM-DD", "America/Toronto");  // Replace YYYY-MM-DD with the specific date.
 
-    // Calculate the total difference in years
-    const years = today.diff(anniversary, 'year');
-    const dateWithYearsAdded = anniversary.add(years, 'year');
-    
-    // Calculate the remaining difference in days
-    const days = today.diff(dateWithYearsAdded, 'day');
+// Define today's date and time in the America/Toronto timezone
+const today = moment.tz("America/Toronto");
 
-    // Calculate the total difference in hours, minutes, and seconds
-    const hours = today.diff(dateWithYearsAdded, 'hour') % 24;
-    const minutes = today.diff(dateWithYearsAdded, 'minute') % 60;
-    const seconds = today.diff(dateWithYearsAdded, 'second') % 60;
+// Calculate the total difference in years
+const years = today.diff(anniversary, 'year');
+const dateWithYearsAdded = anniversary.clone().add(years, 'year');
 
-  // Log the results
-  const output = `Difference: ${years} years, ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds.`;
-  // console.log(output);
+// Calculate the remaining difference in days
+const days = today.diff(dateWithYearsAdded, 'day');
+const dateWithDaysAdded = dateWithYearsAdded.clone().add(days, 'day');
+
+// Calculate the total difference in hours, minutes, and seconds
+const hours = today.diff(dateWithDaysAdded, 'hour') % 24;
+const minutes = today.diff(dateWithDaysAdded, 'minute') % 60;
+const seconds = today.diff(dateWithDaysAdded, 'second') % 60;
+
+// Log the results
+const output = `Difference: ${years} years, ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds.`;
+console.log(output);
   fill("#FE8E86");
   noStroke();
   rect(0, 0, width * 2, height * 2);
